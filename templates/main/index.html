@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная - Автосервис{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Профессиональный автосервис</h1>
+        <p>Качественный ремонт и обслуживание вашего автомобиля</p>
+        <a href="{% url 'appointment' %}" class="btn">Записаться онлайн</a>
+    </div>
+</section>
+
+<section class="advantages">
+    <h2>Наши преимущества</h2>
+    <div class="advantages-grid">
+        <div class="advantage-item">
+            <h3>Современное оборудование</h3>
+            <p>Используем профессиональное диагностическое и ремонтное оборудование</p>
+        </div>
+        <div class="advantage-item">
+            <h3>Опытные мастера</h3>
+            <p>Команда сертифицированных специалистов с многолетним опытом</p>
+        </div>
+        <div class="advantage-item">
+            <h3>Гарантия качества</h3>
+            <p>Предоставляем гарантию на все виды работ и запчасти</p>
+        </div>
+    </div>
+</section>
+
+<section class="featured-services">
+    <h2>Популярные услуги</h2>
+    <div class="services-grid">
+        {% for service in services %}
+        <div class="service-card">
+            <h3>{{ service.name }}</h3>
+            <p>{{ service.description|truncatewords:20 }}</p>
+            <p class="price">от {{ service.price }} ₽</p>
+            <a href="{% url 'services' %}" class="btn-secondary">Подробнее</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="featured-masters">
+    <h2>Наши мастера</h2>
+    <div class="masters-grid">
+        {% for master in masters %}
+        <div class="master-card">
+            <img src="{{ master.photo.url }}" alt="{{ master.name }}">
+            <h3>{{ master.name }}</h3>
+            <p>{{ master.specialization }}</p>
+            <p>Опыт работы: {{ master.experience }} лет</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="online-booking">
+    <h2>Онлайн-запись</h2>
+    <div class="booking-benefits">
+        <div class="benefit-item">
+            <h3>Удобно</h3>
+            <p>Запишитесь на сервис в любое время</p>
+        </div>
+        <div class="benefit-item">
+            <h3>Быстро</h3>
+            <p>Экономьте время на звонках</p>
+        </div>
+        <div class="benefit-item">
+            <h3>Просто</h3>
+            <p>Заполните форму за 2 минуты</p>
+        </div>
+    </div>
+    <a href="{% url 'appointment' %}" class="btn">Записаться сейчас</a>
+</section>
+{% endblock %}

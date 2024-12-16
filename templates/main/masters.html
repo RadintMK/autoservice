@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Мастера - Автосервис{% endblock %}
+
+{% block content %}
+<section class="masters-header">
+    <h1>Наши мастера</h1>
+    <p>Профессионалы своего дела</p>
+</section>
+
+<section class="masters-list">
+    {% for master in masters %}
+    <div class="master-item">
+        <div class="master-photo">
+            <img src="{{ master.photo.url }}" alt="{{ master.name }}">
+        </div>
+        <div class="master-info">
+            <h2>{{ master.name }}</h2>
+            <p class="specialization">{{ master.specialization }}</p>
+            <p class="experience">Опыт работы: {{ master.experience }} лет</p>
+            <div class="car-brands">
+                <h3>Специализация по маркам:</h3>
+                <p>{{ master.car_brands }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

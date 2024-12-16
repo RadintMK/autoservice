@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Диагностика - Автосервис{% endblock %}
+
+{% block content %}
+<section class="diagnostics-header">
+    <h1>Онлайн диагностика</h1>
+    <p>Ответьте на вопросы для предварительного определения неисправности</p>
+</section>
+
+<section class="diagnostics-form">
+    <div class="diagnostic-questionnaire">
+        <form id="diagnosticForm">
+            <div class="question-group">
+                <h3>1. Выберите тип проблемы:</h3>
+                <select id="problemType" required>
+                    <option value="">Выберите категорию</option>
+                    <option value="engine">Двигатель</option>
+                    <option value="transmission">Трансмиссия</option>
+                    <option value="brakes">Тормозная система</option>
+                    <option value="suspension">Подвеска</option>
+                    <option value="electrical">Электрика</option>
+                </select>
+            </div>
+
+            <div class="question-group">
+                <h3>2. Когда появилась проблема?</h3>
+                <select id="problemTime" required>
+                    <option value="">Выберите время</option>
+                    <option value="recent">Недавно</option>
+                    <option value="week">В течение недели</option>
+                    <option value="month">В течение месяца</option>
+                    <option value="longer">Более месяца назад</option>
+                </select>
+            </div>
+
+            <div class="question-group">
+                <h3>3. Опишите симптомы:</h3>
+                <div class="symptoms-list">
+                    <label><input type="checkbox" name="symptoms" value="noise"> Посторонние шумы</label>
+                    <label><input type="checkbox" name="symptoms" value="vibration"> Вибрация</label>
+                    <label><input type="checkbox" name="symptoms" value="smoke"> Дым</label>
+                    <label><input type="checkbox" name="symptoms" value="performance"> Потеря мощности</label>
+                    <label><input type="checkbox" name="symptoms" value="warning"> Горит индикатор на панели</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <h3>4. Дополнительная информация:</h3>
+                <textarea id="additionalInfo" placeholder="Опишите подробнее проблему..."></textarea>
+            </div>
+
+            <button type="submit" class="btn">Получить результат</button>
+        </form>
+    </div>
+
+    <div id="diagnosticResult" class="diagnostic-result" style="display: none;">
+        <h2>Предварительный диагноз</h2>
+        <div id="resultContent"></div>
+        <a href="{% url 'appointment' %}" class="btn">Записаться на диагностику</a>
+    </div>
+</section>
+{% endblock %}

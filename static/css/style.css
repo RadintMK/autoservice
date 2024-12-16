@@ -1,0 +1,457 @@
+:root {
+    --primary-color: #ff3333;
+    --secondary-color: #333333;
+    --background-color: #ffffff;
+    --text-color: #1a1a1a;
+    --gray-light: #f5f5f5;
+    --gray-dark: #2c2c2c;
+    --shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Header */
+header {
+    background-color: var(--gray-dark);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+nav ul li {
+    margin: 0 1.5rem;
+}
+
+nav ul li a {
+    color: var(--background-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Main Content */
+main {
+    margin-top: 60px;
+    min-height: calc(100vh - 120px);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/hero-bg.png');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--background-color);
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #cc2929;
+}
+
+
+
+/* Sections */
+section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--secondary-color);
+}
+
+/* Grid Layouts */
+.advantages-grid,
+.services-grid,
+.masters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Cards */
+.service-card,
+.master-card,
+.advantage-item {
+    background: var(--background-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+}
+
+.service-card:hover,
+.master-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+/* Стили для страницы диагностики */
+.diagnostics-header {
+    background: var(--gradient);
+    padding: 6rem 2rem 4rem;
+    text-align: center;
+    color: var(--background);
+    position: relative;
+    overflow: hidden;
+}
+
+.diagnostics-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255,255,255,0.05) 10px,
+        rgba(255,255,255,0.05) 20px
+    );
+}
+
+.diagnostics-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.diagnostics-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    position: relative;
+}
+
+.diagnostics-form {
+    max-width: 800px;
+    margin: -2rem auto 4rem;
+    padding: 2rem;
+    position: relative;
+}
+
+.diagnostic-questionnaire {
+    background: var(--background);
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+    padding: 3rem;
+    position: relative;
+}
+
+.diagnostic-questionnaire::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--gradient);
+    border-radius: 15px 15px 0 0;
+}
+
+.question-group {
+    margin-bottom: 3rem;
+}
+
+.question-group h3 {
+    color: var(--secondary);
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.question-group h3::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    margin-right: 1rem;
+    border-radius: 50%;
+}
+
+select {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--surface);
+    border-radius: 8px;
+    font-size: 1rem;
+    appearance: none;
+    background: var(--background);
+    background-image: linear-gradient(45deg, transparent 50%, var(--primary) 50%),
+                      linear-gradient(135deg, var(--primary) 50%, transparent 50%);
+    background-position: calc(100% - 20px) calc(1em + 2px),
+                         calc(100% - 15px) calc(1em + 2px);
+    background-size: 5px 5px,
+                    5px 5px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255, 51, 51, 0.1);
+}
+
+.symptoms-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.symptoms-list label {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: var(--surface);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.symptoms-list label:hover {
+    background: var(--primary-light);
+    color: var(--background);
+}
+
+.symptoms-list input[type="checkbox"] {
+    margin-right: 1rem;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 1rem;
+    border: 2px solid var(--surface);
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255, 51, 51, 0.1);
+}
+
+.diagnostic-result {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--surface);
+    border-radius: 15px;
+    box-shadow: var(--shadow-md);
+    animation: slideUp 0.5s ease;
+}
+
+.diagnostic-result h2 {
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+}
+
+#resultContent {
+    padding: 1.5rem;
+    background: var(--background);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .diagnostics-header {
+        padding: 4rem 1rem 2rem;
+    }
+
+    .diagnostics-form {
+        margin: -1rem 1rem 2rem;
+    }
+
+    .diagnostic-questionnaire {
+        padding: 2rem;
+    }
+
+    .symptoms-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .diagnostics-header h1 {
+        font-size: 2rem;
+    }
+
+    .question-group h3 {
+        font-size: 1.1rem;
+    }
+}
+
+
+/* Messages */
+.messages {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 1000;
+    transition: opacity 0.6s;
+}
+
+.message {
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    color: var(--background-color);
+}
+
+.message.success {
+    background-color: #28a745;
+}
+
+.message.error {
+    background-color: #dc3545;
+}
+
+/* Footer */
+footer {
+    background-color: var(--gray-dark);
+    color: var(--background-color);
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    section {
+        padding: 2rem 1rem;
+    }
+
+    .advantages-grid,
+    .services-grid,
+    .masters-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.service-card,
+.master-card,
+.advantage-item {
+    opacity: 0;
+}
+
+.visible {
+    animation: fadeIn 0.6s forwards;
+}

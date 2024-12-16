@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}Запись - Автосервис{% endblock %}
+
+{% block content %}
+<section class="appointment-header">
+    <h1>Онлайн запись</h1>
+    <p>Заполните форму для записи на обслуживание</p>
+</section>
+
+<section class="appointment-form">
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.name.id_for_label }}">Ваше имя:</label>
+            {{ form.name }}
+            {% if form.name.errors %}
+            <div class="error-message">
+                {% for error in form.name.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.phone.id_for_label }}">Телефон:</label>
+            {{ form.phone }}
+            {% if form.phone.errors %}
+            <div class="error-message">
+                {% for error in form.phone.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.car_brand.id_for_label }}">Марка автомобиля:</label>
+            {{ form.car_brand }}
+            {% if form.car_brand.errors %}
+            <div class="error-message">
+                {% for error in form.car_brand.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.service.id_for_label }}">Услуга:</label>
+            {{ form.service }}
+            {% if form.service.errors %}
+            <div class="error-message">
+                {% for error in form.service.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.issue.id_for_label }}">Описание проблемы:</label>
+            {{ form.issue }}
+            {% if form.issue.errors %}
+            <div class="error-message">
+                {% for error in form.issue.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="{{ form.preferred_date.id_for_label }}">Предпочтительная дата:</label>
+                {{ form.preferred_date }}
+                {% if form.preferred_date.errors %}
+                <div class="error-message">
+                    {% for error in form.preferred_date.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.preferred_time.id_for_label }}">Предпочтительное время:</label>
+                {{ form.preferred_time }}
+                {% if form.preferred_time.errors %}
+                <div class="error-message">
+                    {% for error in form.preferred_time.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <button type="submit" class="btn">Записаться</button>
+    </form>
+</section>
+{% endblock %}
