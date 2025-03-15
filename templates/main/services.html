@@ -4,29 +4,33 @@
 
 {% block content %}
 <section class="services-header">
-    <h1>Наши услуги</h1>
-    <p>Полный спектр услуг по ремонту и обслуживанию автомобилей</p>
+    <div class="container">
+        <h1>Наши услуги</h1>
+        <p>Полный спектр услуг по ремонту и обслуживанию автомобилей</p>
+    </div>
 </section>
 
 <section class="services-list">
-    {% for service in services %}
-    <div class="service-item">
-        <div class="service-content">
-            <h2>{{ service.name }}</h2>
-            <div class="service-description">
-                {{ service.description|linebreaks }}
+    <div class="container">
+        {% for service in services %}
+        <div class="service-item">
+            <div class="service-content">
+                <h2>{{ service.name }}</h2>
+                <div class="service-description">
+                    {{ service.description|linebreaks }}
+                </div>
+                <div class="service-equipment">
+                    <h3>Используемое оборудование:</h3>
+                    {{ service.equipment|linebreaks }}
+                </div>
+                <div class="service-price">
+                    <span class="price-label">Стоимость:</span>
+                    <span class="price-value">от {{ service.price }} ₽</span>
+                </div>
+                <a href="{% url 'appointment' %}" class="btn">Записаться</a>
             </div>
-            <div class="service-equipment">
-                <h3>Используемое оборудование:</h3>
-                {{ service.equipment|linebreaks }}
-            </div>
-            <div class="service-price">
-                <span class="price-label">Стоимость:</span>
-                <span class="price-value">от {{ service.price }} ₽</span>
-            </div>
-            <a href="{% url 'appointment' %}" class="btn">Записаться</a>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </section>
 {% endblock %}

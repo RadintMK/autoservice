@@ -8,16 +8,19 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="{% url 'index' %}">Главная</a></li>
-                <li><a href="{% url 'services' %}">Услуги</a></li>
-                <li><a href="{% url 'masters' %}">Мастера</a></li>
-                <li><a href="{% url 'diagnostics' %}">Диагностика</a></li>
-                <li><a href="{% url 'appointment' %}">Запись</a></li>
-            </ul>
-        </nav>
+    <header id="siteHeader">
+        <div class="header-container">
+            <a href="{% url 'index' %}" class="logo">Авто<span>Сервис</span></a>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}" class="{% if request.path == '/' %}active{% endif %}">Главная</a></li>
+                    <li><a href="{% url 'services' %}" class="{% if request.path == '/services/' %}active{% endif %}">Услуги</a></li>
+                    <li><a href="{% url 'masters' %}" class="{% if request.path == '/masters/' %}active{% endif %}">Мастера</a></li>
+                    <li><a href="{% url 'diagnostics' %}" class="{% if request.path == '/diagnostics/' %}active{% endif %}">Диагностика</a></li>
+                    <li><a href="{% url 'appointment' %}" class="{% if request.path == '/appointment/' %}active{% endif %}">Запись</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>

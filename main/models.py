@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+from django.utils import timezone
 
 class Service(models.Model):
     name = models.CharField(max_length=200)
@@ -23,10 +25,14 @@ class Appointment(models.Model):
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=20)
     car_brand = models.CharField(max_length=100)
-    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    service = models.ForeignKey('Service', on_delete=models.CASCADE)
     issue = models.TextField()
     preferred_date = models.DateField()
     preferred_time = models.TimeField()
-    
+
     def __str__(self):
         return f"{self.name} - {self.preferred_date}"
+
+    def clean(self):
+        if self.preferred_date < timezone.localdate():
+            raise ValidationError("Дата не может быть в прошлом")
